@@ -8,22 +8,25 @@ CYAN='\033[0;36m'
 CLEAR='\033[0m'
 
 CONFIG_FILE_PATH="$HOME/.config/nvim.conf"
-VERSION=0.1.1
+VERSION=0.1.0
+
+source ./nvim-manager-install.sh
 
 show_help() {
   echo -e "Usage: ${YELLOW}Neovim Manager CLI ${PURPLE}[COMMAND]${CYAN} [NVIM_OPTIONS...]${CLEAR}"
   echo
   echo "Available commands: (no command or options start config selector)"
-  echo -e "  ${PURPLE}sel, select${CLEAR}     Show a selector to choose the Neovim configuration"
-  echo -e "  ${PURPLE}conf, config${CLEAR}    Edit Neovim Managaer config"
-  echo -e "  ${PURPLE}def, default${CLEAR}    Use default config"
-  echo -e "  ${PURPLE}sys, system${CLEAR}     Use system config"
+  echo -e "  ${PURPLE}sel, select${CLEAR}         Show a selector to choose the Neovim configuration"
+  echo -e "  ${PURPLE}edit, edit-config${CLEAR}   Edit Neovim Managaer config"
+  echo -e "  ${PURPLE}def, default${CLEAR}        Use default config"
+  echo -e "  ${PURPLE}sys, system${CLEAR}         Use system config"
+  echo -e "  ${PURPLE}set, setup${CLEAR}          Setup Neovim Manager"
   echo
   echo "Available options:"
-  echo -e "  ${PURPLE}-h, --help${CLEAR}      Show help"
-  echo -e "  ${PURPLE}-v, --version${CLEAR}   Show CLI version"
-  echo -e "  ${PURPLE}-d, --default${CLEAR}   Show default config path"
-  echo -e "  ${PURPLE}-c, --conf${CLEAR}      Show available configs"
+  echo -e "  ${PURPLE}-h, --help${CLEAR}          Show help"
+  echo -e "  ${PURPLE}-v, --version${CLEAR}       Show CLI version"
+  # echo -e "  ${PURPLE}-d, --default${CLEAR}       Show default config path"
+  # echo -e "  ${PURPLE}-c, --conf${CLEAR}          Show available configs"
 }
 
 get_nvim_instances() {
@@ -84,7 +87,7 @@ get_default_config() {
   done
 
   default_config=${default_config:-${items[0]}}
-  #
+
   # Remove the * character
   default_config="${default_config%\*}"
 
@@ -137,7 +140,7 @@ while [[ $# -gt 0 ]]; do
     shift # Remove argument
     use_config_selector "$@"
     ;;
-  conf | config)
+  edit | edit-config)
     echo "sel"
     shift # Remove argument
     use_default_environment $CONFIG_FILE_PATH
@@ -150,6 +153,11 @@ while [[ $# -gt 0 ]]; do
   sys | system)
     shift # Remove argument
     use_native_environment "$@"
+    ;;
+  set | setup)
+    shift # Remove argument
+    setup
+
     ;;
   -d | --default)
     shift # Remove argument
