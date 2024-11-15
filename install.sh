@@ -1,5 +1,12 @@
 #!/bin/bash
 
+RED='\033[0;31m'
+YELLOW='\033[1;33m'
+GREEN='\033[0;32m'
+PURPLE='\033[0;35m'
+CYAN='\033[0;36m'
+CLEAR='\033[0m'
+
 SCRIPT_NAME="neovim-manager"
 SCRIPT_URL=https://raw.githubusercontent.com/ajmasia/neovim-manager/main/neovim-manager
 
@@ -13,7 +20,7 @@ NVIM_CONF_BACKUP="$NVIM_CONF_FILE.bk"
 
 ALIAS_NAME=nm
 
-echo "Starting CLI installation..."
+echo "${YELLOW}Starting CLI installation ...${CLEAR}"
 
 # Check if the installation directory exists
 if [ ! -d "$INSTALL_DIR" ]; then
@@ -45,8 +52,20 @@ if [ -f "$NVIM_CONF_FILE" ]; then
   mv "$NVIM_CONF_FILE" "$NVIM_CONF_BACKUP"
 fi
 
-echo "Creating new nvim.conf file and adding the line 'nvim*'..."
-echo "nvim*" >"$NVIM_CONF_FILE"
+# Ask user for default configuration
+echo -n "Would you like to define a default configuration? [y/N]: "
+read -r define_default
+
+if [[ "$define_default" =~ ^[Yy]$ ]]; then
+  echo -n "Please enter the name of the configuration you want to set as default: "
+  read -r config_name
+  echo "Creating new nvim.conf file with the configuration '${config_name}*'..."
+  echo "nvim" >"$NVIM_CONF_FILE"
+  echo "${config_name}*" >"$NVIM_CONF_FILE"
+else
+  echo "Creating new nvim.conf file with the default configuration 'nvim*'..."
+  echo "nvim*" >"$NVIM_CONF_FILE"
+fi
 
 echo "Installation complete. The script is available at $INSTALL_PATH"
 
