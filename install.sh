@@ -20,35 +20,39 @@ NVIM_CONF_BACKUP="$NVIM_CONF_FILE.bk"
 
 ALIAS_NAME=nm
 
-echo -e "${YELLOW}Starting CLI installation ...${CLEAR}"
+echo -e "${GREEN}Neovim Manager CLI installer${CLEAR}"
+echo -e "${YELLOW}Starting CLI installation${CLEAR}"
 
 # Check if the installation directory exists
 if [ ! -d "$INSTALL_DIR" ]; then
-  echo "Creating installation directory: $INSTALL_DIR"
+  echo -e "${GREEN}Creating installation directory:${CLEAR} $INSTALL_DIR"
   mkdir -p "$INSTALL_DIR"
 fi
 
 # Download the script and place it in the user's path
-echo "Downloading script from $SCRIPT_URL..."
+echo -e "${YELLOW}Downloading script from${CLEAR} $SCRIPT_URL"
 curl -o "$INSTALL_PATH" "$SCRIPT_URL"
 
 # Ensure the script has execution permissions
-echo "Setting executable permissions for the script..."
+echo -e "${YELLOW}Setting executable permissions for the script${CLEAR}"
 chmod +x "$INSTALL_PATH"
 
+echo -e "${GREEN}Script installed successfully${CLEAR}"
+
+echo -e "${YELLOW}Starting settings${CLEAR}"
 # Check and create ~/.config/nvim/init.lua if it doesn't exist
 if [ ! -f "$NVIM_INIT_FILE" ]; then
-  echo "Creating init.lua file in $NVIM_CONFIG_DIR..."
+  echo -e "${YELLOW}Creating init.lua file in${CLEAR} $NVIM_CONFIG_DIR"
   mkdir -p "$NVIM_CONFIG_DIR"
   touch "$NVIM_INIT_FILE"
   echo "-- Initial Neovim configuration" >"$NVIM_INIT_FILE"
 else
-  echo "The file $NVIM_INIT_FILE already exists. No changes made."
+  echo -e "${YELLOW}The file${CLEAR} $NVIM_INIT_FILE ${YELLOW}already exists. No changes made${CLEAR}"
 fi
 
 # Check and handle ~/.config/nvim.conf
 if [ -f "$NVIM_CONF_FILE" ]; then
-  echo "The file $NVIM_CONF_FILE already exists. Renaming it to $NVIM_CONF_BACKUP..."
+  echo -e "${YELLOW}The file${CLEAR} $NVIM_CONF_FILE ${YELLOW}already exists. Renaming it to${CLEAR} $NVIM_CONF_BACKUP"
   mv "$NVIM_CONF_FILE" "$NVIM_CONF_BACKUP"
 fi
 
@@ -61,20 +65,22 @@ if [[ "$define_default" =~ ^[Yy]$ ]]; then
 
   read -r config_name </dev/tty
 
-  echo "Creating new nvim.conf file with the configuration '${config_name}*'..."
+  echo -e "${YELLOW}Creating new nvim.conf file with the configuration${CLEAR} '${config_name}*'"
   echo "${config_name}*" >"$NVIM_CONF_FILE"
   echo "nvim" >>"$NVIM_CONF_FILE"
 else
-  echo "Creating new nvim.conf file with the default configuration 'nvim*'..."
+  echo -e "${YELLOW}Creating new nvim.conf file with the default configuration ${CLEAR}'nvim*'"
   echo "nvim*" >"$NVIM_CONF_FILE"
 fi
 
-echo "Installation complete. The script is available at $INSTALL_PATH"
+echo -e "${GREEN}neovim-manager config file created succesfully${CLEAR}"
+echo "----------------------------------------------"
+echo -e "${GREEN}Installation completed successfully${CLEAR}\n"
 
 # Suggest alias creation
-echo ""
-echo "To make it easier to run the script, you can add an alias to your shell configuration file:"
+echo -e "${GREEM}INSTALL INFO${CLEAR}"
+echo -e "${YELLOW}To make it easier to run the script, you can add an alias to your shell configuration file:${CLEAR}"
 echo ""
 echo "  alias $ALIAS_NAME='$INSTALL_PATH'"
 echo ""
-echo "Add this line to your ~/.bashrc, ~/.zshrc, or equivalent file, and run 'source ~/.bashrc' or 'source ~/.zshrc' to apply the changes. Then, you can run the script using '$ALIAS_NAME' from anywhere."
+echo -e "${YELLOW}Add this line to your ~/.bashrc, ~/.zshrc, or equivalent file, and run 'source ~/.bashrc' or 'source ~/.zshrc' to apply the changes. Then, you can run the script using '$ALIAS_NAME' from anywhere.${CLEAR}"
