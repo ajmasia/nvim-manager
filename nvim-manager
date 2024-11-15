@@ -9,8 +9,9 @@ CLEAR='\033[0m'
 
 CONFIG_FILE_PATH="$HOME/.config/nvim.conf"
 VERSION=0.1.0
+INSTALLER_PATH=$HOME/.local/bin/nvim-manager/nvim-manager-installer.sh
 
-source ./nvim-manager-install.sh
+source $INSTALLER_PATH
 
 show_help() {
   echo -e "Usage: ${YELLOW}Neovim Manager CLI ${PURPLE}[COMMAND]${CYAN} [NVIM_OPTIONS...]${CLEAR}"

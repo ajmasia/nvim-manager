@@ -8,11 +8,13 @@ CYAN='\033[0;36m'
 CLEAR='\033[0m'
 
 SCRIPT_NAME="nvim-manager"
+INSTALER_NAME="$SCRIPT_NAME-install.sh"
 SCRIPT_URL=https://raw.githubusercontent.com/ajmasia/neovim-manager/main/$SCRIPT_NAME
-INSTALLER_URL=https://raw.githubusercontent.com/ajmasia/neovim-manager/main/$SCRIPT_NAME-install.sh
+INSTALLER_URL=https://raw.githubusercontent.com/ajmasia/neovim-manager/main/$INSTALER_NAME
 
 INSTALL_DIR="$HOME/.local/bin/"
 INSTALL_PATH="$INSTALL_DIR/$SCRIPT_NAME"
+INSTALLER_PATH="$INSTALL_DIR/$INSTALER_NAME"
 
 NVIM_CONFIG_DIR="$HOME/.config/nvim"
 NVIM_INIT_FILE="$NVIM_CONFIG_DIR/init.lua"
@@ -62,7 +64,7 @@ download_script() {
   # Download the script and place it in the user's path
   echo -e "Downloading needed files"
   curl -o "$INSTALL_PATH" "$SCRIPT_URL"
-  curl -o "$INSTALL_PATH" "$INSTALLER_URL"
+  curl -o "$INSTALLER_PATH" "$INSTALLER_URL"
 
   # Ensure the script has execution permissions
   echo -e "Setting executable permissions"
@@ -144,4 +146,6 @@ main() {
   echo -e "✅ ${GREEN}Installation completed successfully${CLEAR}"
 }
 
-main
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+  main
+fi
