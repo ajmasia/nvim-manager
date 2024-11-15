@@ -7,12 +7,6 @@ PURPLE='\033[0;35m'
 CYAN='\033[0;36m'
 CLEAR='\033[0m'
 
-SCRIPT_NAME="nvim-manager"
-INSTALER_NAME="$SCRIPT_NAME-install.sh"
-
-INSTALL_DIR="$HOME/.local/bin/"
-INSTALL_PATH="$INSTALL_DIR/$SCRIPT_NAME"
-
 NVIM_CONFIG_DIR="$HOME/.config/nvim"
 NVIM_INIT_FILE="$NVIM_CONFIG_DIR/init.lua"
 NVIM_CONF_FILE="$HOME/.config/nvim.conf"

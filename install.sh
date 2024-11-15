@@ -7,16 +7,16 @@ PURPLE='\033[0;35m'
 CYAN='\033[0;36m'
 CLEAR='\033[0m'
 
-SCRIPT_NAME="nvim-manager"
-HELPER_NAME="$SCRIPT_NAME-helper.sh"
+SCRIPT_PATH="src/nvim-manager"
+HELPER_PATH="src/helper.sh"
 
-SCRIPT_URL=https://raw.githubusercontent.com/ajmasia/neovim-manager/main/$SCRIPT_NAME
-HELPER_URL=https://raw.githubusercontent.com/ajmasia/neovim-manager/main/$INSTALER_NAME
+SCRIPT_URL=https://raw.githubusercontent.com/ajmasia/neovim-manager/main/$SCRIPT_PATH
+HELPER_URL=https://raw.githubusercontent.com/ajmasia/neovim-manager/main/$HELPER_PATH
 
 INSTALL_DIR="$HOME/.local/bin"
 
-INSTALL_PATH="$INSTALL_DIR/$SCRIPT_NAME"
-HELPER_PATH="$INSTALL_DIR/$HELPER_NAME"
+INSTALL_PATH="$INSTALL_DIR/$SCRIPT_PATH"
+HELPER_INSTALL_PATH="$INSTALL_DIR/$HELPER_PATH"
 
 check_dependencies() {
   echo -e "${PURPLE}Checking dependencies${CLEAR}\n"
@@ -59,7 +59,7 @@ download_scripts() {
   # Download the script and place it in the user's path
   echo -e "Downloading needed files"
   curl -o "$INSTALL_PATH" "$SCRIPT_URL"
-  curl -o "$HELPER_PATH" "$HELPER_URL"
+  curl -o "$HELPER_INSTALL_PATH" "$HELPER_URL"
 
   # Ensure the script has execution permissions
   echo -e "Setting executable permissions"
@@ -79,7 +79,7 @@ show_post_install_messages() {
 }
 
 initial_setup() {
-  source $HELPER_PATH
+  source $HELPER_INSTALL_PATH
   setup
 }
 
