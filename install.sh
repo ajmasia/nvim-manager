@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 
 RED='\033[0;31m'
 YELLOW='\033[1;33m'
@@ -54,14 +54,16 @@ fi
 
 # Ask user for default configuration
 echo -n "Would you like to define a default configuration? [y/N]: "
-read -r define_default
+read -r define_default </dev/tty
 
 if [[ "$define_default" =~ ^[Yy]$ ]]; then
   echo -n "Please enter the name of the configuration you want to set as default: "
-  read -r config_name
+
+  read -r config_name </dev/tty
+
   echo "Creating new nvim.conf file with the configuration '${config_name}*'..."
-  echo "nvim" >"$NVIM_CONF_FILE"
   echo "${config_name}*" >"$NVIM_CONF_FILE"
+  echo "nvim" >>"$NVIM_CONF_FILE"
 else
   echo "Creating new nvim.conf file with the default configuration 'nvim*'..."
   echo "nvim*" >"$NVIM_CONF_FILE"
