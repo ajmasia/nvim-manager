@@ -89,8 +89,8 @@ main() {
   download_scripts
   initial_setup
   show_post_install_messages
-  echo -e "✅ ${GREEN}Installation completed successfully${CLEAR}"
   nvim-manager --version
+  echo -e "✅ ${GREEN}Installation completed successfully${CLEAR}"
 }
 
 main
