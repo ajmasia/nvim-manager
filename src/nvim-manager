@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
 VERSION=0.1.0
-HELPER_PATH=$HOME/.local/bin/nvim-manager-helper.sh
+HELPER_PATH=helper.sh
 CONFIG_FILE_PATH="$HOME/.config/nvim.conf"
 
 source $HELPER_PATH
