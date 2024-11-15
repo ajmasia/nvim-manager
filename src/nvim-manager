@@ -1,6 +1,5 @@
 #!/usr/bin/bash
 
-VERSION=0.1.0
 CONFIG_FILE_PATH="$HOME/.config/nvim.conf"
 
 source helper.sh
@@ -108,7 +107,7 @@ use_config_selector() {
 }
 
 show_nvim_manager_version() {
-  echo -e "${GREEN}$VERSION${GREEN}"
+  echo -e "${GREEN}Neovim Manager $VERSION${GREEN}"
   exit 0
 }
 

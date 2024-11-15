@@ -7,6 +7,8 @@ PURPLE='\033[0;35m'
 CYAN='\033[0;36m'
 CLEAR='\033[0m'
 
+VERSION=0.1.0
+
 NVIM_CONFIG_DIR="$HOME/.config/nvim"
 NVIM_INIT_FILE="$NVIM_CONFIG_DIR/init.lua"
 NVIM_CONF_FILE="$HOME/.config/nvim.conf"
