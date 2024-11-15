@@ -9,7 +9,7 @@ CLEAR='\033[0m'
 
 CONFIG_FILE_PATH="$HOME/.config/nvim.conf"
 VERSION=0.1.0
-INSTALLER_PATH=$HOME/.local/bin/nvim-manager/nvim-manager-installer.sh
+INSTALLER_PATH=$HOME/.local/bin/nvim-manager-installer.sh
 
 source $INSTALLER_PATH
 
