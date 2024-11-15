@@ -20,7 +20,7 @@ NVIM_CONF_BACKUP="$NVIM_CONF_FILE.bk"
 
 ALIAS_NAME=nm
 
-echo "${YELLOW}Starting CLI installation ...${CLEAR}"
+echo -e "${YELLOW}Starting CLI installation ...${CLEAR}"
 
 # Check if the installation directory exists
 if [ ! -d "$INSTALL_DIR" ]; then
