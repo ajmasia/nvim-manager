@@ -146,6 +146,14 @@ main() {
   echo -e "✅ ${GREEN}Installation completed successfully${CLEAR}"
 }
 
-if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
-  main
+if [[ -n "$1" ]]; then
+  if [[ "$1" == "main" ]]; then
+    main
+  else
+    echo -e "❌ ${RED}Bad argument. Please use 'main' argument${CLEAR}"
+    exit 1
+  fi
+else
+  echo -e "❌ ${RED}No argument passed. Please use 'main' argument${CLEAR}"
+  exit 1
 fi
