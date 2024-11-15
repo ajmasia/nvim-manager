@@ -7,16 +7,16 @@ PURPLE='\033[0;35m'
 CYAN='\033[0;36m'
 CLEAR='\033[0m'
 
-SCRIPT_PATH="src/nvim-manager"
-HELPER_PATH="src/helper.sh"
+SCRIPT_NAME="nvim-manager"
+HELPER_NAME="helper.sh"
 
-SCRIPT_URL=https://raw.githubusercontent.com/ajmasia/neovim-manager/main/$SCRIPT_PATH
-HELPER_URL=https://raw.githubusercontent.com/ajmasia/neovim-manager/main/$HELPER_PATH
+SCRIPT_URL=https://raw.githubusercontent.com/ajmasia/neovim-manager/main/src/$SCRIPT_NAME
+HELPER_URL=https://raw.githubusercontent.com/ajmasia/neovim-manager/main/src/$HELPER_NAME
 
 INSTALL_DIR="$HOME/.local/bin"
 
-INSTALL_PATH="$INSTALL_DIR/$SCRIPT_PATH"
-HELPER_INSTALL_PATH="$INSTALL_DIR/$HELPER_PATH"
+INSTALL_PATH="$INSTALL_DIR/$SCRIPT_NAME"
+HELPER_INSTALL_PATH="$INSTALL_DIR/$HELPER_NAME"
 
 check_dependencies() {
   echo -e "${PURPLE}Checking dependencies${CLEAR}\n"
