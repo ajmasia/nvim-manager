@@ -28,8 +28,11 @@ To install Neovim Manager, run one of the following commands in your terminal:
 
 ```bash
 curl -sSL https://raw.githubusercontent.com/ajmasia/neovim-manager/main/install.sh | bash
+```
 
-# or
+or
+
+```bash
 
 wget -qO- https://raw.githubusercontent.com/ajmasia/neovim-manager/main/install.sh | bash
 ```
@@ -75,7 +78,8 @@ Test the CLI locally:
 
 ## Roadmap
 
-- [ ] Improve install script
+- [ ] Check dependencies in the installation script
+- [ ] Add a welcome banner to the installation script
 - [ ] Add update option to the CLI
 - [ ] Add option no install [Lazyvim](https://www.lazyvim.org/installation) in a clean separated config
 
