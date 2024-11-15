@@ -27,14 +27,14 @@ Before using Neovim Manager, ensure you have the following installed:
 To install Neovim Manager, run one of the following commands in your terminal:
 
 ```bash
-curl -sSL https://raw.githubusercontent.com/ajmasia/neovim-manager/main/install.sh | bash
+curl -sSL https://raw.githubusercontent.com/ajmasia/neovim-manager/main/nvim-manager-install.sh | bash
 ```
 
 or
 
 ```bash
 
-wget -qO- https://raw.githubusercontent.com/ajmasia/neovim-manager/main/install.sh | bash
+wget -qO- https://raw.githubusercontent.com/ajmasia/neovim-manager/main/nvim-manager-install.sh | bash
 ```
 
 ## Usage
