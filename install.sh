@@ -8,15 +8,13 @@ CYAN='\033[0;36m'
 CLEAR='\033[0m'
 
 SCRIPT_NAME="nvim-manager"
-INSTALER_NAME="$SCRIPT_NAME-install.sh"
+HELPER_NAME="$SCRIPT_NAME-helper.sh"
 SCRIPT_URL=https://raw.githubusercontent.com/ajmasia/neovim-manager/main/$SCRIPT_NAME
-INSTALLER_URL=https://raw.githubusercontent.com/ajmasia/neovim-manager/main/$INSTALER_NAME
+HELPER_URL=https://raw.githubusercontent.com/ajmasia/neovim-manager/main/$INSTALER_NAME
 
 INSTALL_DIR="$HOME/.local/bin/"
 INSTALL_PATH="$INSTALL_DIR/$SCRIPT_NAME"
-INSTALLER_PATH="$INSTALL_DIR/$INSTALER_NAME"
-
-ALIAS_NAME=nm
+HELPER_PATH="$INSTALL_DIR/$HELPER_NAME"
 
 check_dependencies() {
   echo -e "${PURPLE}Checking dependencies${CLEAR}\n"
@@ -59,7 +57,7 @@ download_scripts() {
   # Download the script and place it in the user's path
   echo -e "Downloading needed files"
   curl -o "$INSTALL_PATH" "$SCRIPT_URL"
-  curl -o "$INSTALLER_PATH" "$INSTALLER_URL"
+  curl -o "$HELPER_PATH" "$HELPER_URL"
 
   # Ensure the script has execution permissions
   echo -e "Setting executable permissions"
@@ -68,10 +66,27 @@ download_scripts() {
   echo -e "\n✅ ${GREEN}Script installed successfully${CLEAR}\n"
 }
 
+show_post_install_messages() {
+  echo -e "${PURPLE}Post install info${CLEAR}\n"
+  echo -e "To make it easier to run the script, you can add an alias to your shell configuration file:"
+  echo ""
+  echo -e "  ${CYAN}alias $ALIAS_NAME='$INSTALL_PATH'${CLEAR}"
+  echo ""
+  echo -e "Add this line to your ~/.bashrc, ~/.zshrc, or equivalent file, and source the new config to apply the changes."
+  echo -e "Then, you can run the script using '$ALIAS_NAME' from anywhere.\n"
+}
+
+initial_setup() {
+  source $HELPER_PATH
+  setup
+}
+
 main() {
   echo -e "${GREEN}Neovim Manager CLI installer${CLEAR}\n"
   check_dependencies
   download_scripts
+  setup
+  show_post_install_messages
   echo -e "✅ ${GREEN}Installation completed successfully${CLEAR}"
 }
 

@@ -9,12 +9,9 @@ CLEAR='\033[0m'
 
 SCRIPT_NAME="nvim-manager"
 INSTALER_NAME="$SCRIPT_NAME-install.sh"
-SCRIPT_URL=https://raw.githubusercontent.com/ajmasia/neovim-manager/main/$SCRIPT_NAME
-INSTALLER_URL=https://raw.githubusercontent.com/ajmasia/neovim-manager/main/$INSTALER_NAME
 
 INSTALL_DIR="$HOME/.local/bin/"
 INSTALL_PATH="$INSTALL_DIR/$SCRIPT_NAME"
-INSTALLER_PATH="$INSTALL_DIR/$INSTALER_NAME"
 
 NVIM_CONFIG_DIR="$HOME/.config/nvim"
 NVIM_INIT_FILE="$NVIM_CONFIG_DIR/init.lua"
@@ -22,56 +19,6 @@ NVIM_CONF_FILE="$HOME/.config/nvim.conf"
 NVIM_CONF_BACKUP="$NVIM_CONF_FILE.bk"
 
 ALIAS_NAME=nm
-
-check_dependencies() {
-  echo -e "${PURPLE}Checking dependencies${CLEAR}\n"
-
-  # Array de dependencias
-  dependencies=("nvim" "fzf" "git" "curl" "wget")
-
-  # Variable para rastrear si faltan dependencias
-  all_installed=true
-
-  # Iterar sobre las dependencias
-  for dependency in "${dependencies[@]}"; do
-    if command -v "$dependency" &>/dev/null; then
-      echo -e "✅ $dependency is installed"
-    else
-      echo -e "❌ $dependency is not installed"
-      all_installed=false
-    fi
-  done
-
-  # Comprobación final
-  if $all_installed; then
-    echo -e "\n✅ ${GREEN}All dependencies are installed!${CLEAR}\n"
-    return 0
-  else
-    echo -e "\n❌ ${RED}Some dependencies are missing. Please install them.${CLEAR}\n"
-    return 1
-  fi
-}
-
-download_script() {
-  echo -e "${PURPLE}Starting CLI download${CLEAR}\n"
-
-  # Check if the installation directory exists
-  if [ ! -d "$INSTALL_DIR" ]; then
-    echo -e "Creating installation directory: $INSTALL_DIR"
-    mkdir -p "$INSTALL_DIR"
-  fi
-
-  # Download the script and place it in the user's path
-  echo -e "Downloading needed files"
-  curl -o "$INSTALL_PATH" "$SCRIPT_URL"
-  curl -o "$INSTALLER_PATH" "$INSTALLER_URL"
-
-  # Ensure the script has execution permissions
-  echo -e "Setting executable permissions"
-  chmod +x "$INSTALL_PATH"
-
-  echo -e "\n✅ ${GREEN}Script installed successfully${CLEAR}\n"
-}
 
 setup() {
   echo -e "${PURPLE}Starting neovim-manager setup${CLEAR}\n"
@@ -124,21 +71,3 @@ setup() {
 
   echo -e "\n✅ ${GREEN}Neovim manager setup finished${CLEAR}\n"
 }
-
-show_post_install_messages() {
-  echo -e "${PURPLE}Post install info${CLEAR}\n"
-  echo -e "To make it easier to run the script, you can add an alias to your shell configuration file:"
-  echo ""
-  echo -e "  ${CYAN}alias $ALIAS_NAME='$INSTALL_PATH'${CLEAR}"
-  echo ""
-  echo -e "Add this line to your ~/.bashrc, ~/.zshrc, or equivalent file, and source the new config to apply the changes."
-  echo -e "Then, you can run the script using '$ALIAS_NAME' from anywhere.\n"
-}
-
-main() {
-
-  setup
-  show_post_install_messages
-}
-
-main
