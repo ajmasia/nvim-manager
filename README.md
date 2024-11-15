@@ -78,10 +78,11 @@ Test the CLI locally:
 
 ## Roadmap
 
-- [ ] Check dependencies in the installation script
+- [x] Check dependencies in the installation script
+- [x] Improve installer and helper functions
 - [ ] Add a welcome banner to the installation script
 - [ ] Add update option to the CLI
-- [ ] Add option no install [Lazyvim](https://www.lazyvim.org/installation) in a clean separated config
+- [ ] Add option to install [Lazyvim](https://www.lazyvim.org/installation) in a clean separated config
 
 ## License
 
