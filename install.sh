@@ -9,10 +9,12 @@ CLEAR='\033[0m'
 
 SCRIPT_NAME="nvim-manager"
 HELPER_NAME="$SCRIPT_NAME-helper.sh"
+
 SCRIPT_URL=https://raw.githubusercontent.com/ajmasia/neovim-manager/main/$SCRIPT_NAME
 HELPER_URL=https://raw.githubusercontent.com/ajmasia/neovim-manager/main/$INSTALER_NAME
 
-INSTALL_DIR="$HOME/.local/bin/"
+INSTALL_DIR="$HOME/.local/bin"
+
 INSTALL_PATH="$INSTALL_DIR/$SCRIPT_NAME"
 HELPER_PATH="$INSTALL_DIR/$HELPER_NAME"
 
@@ -85,7 +87,7 @@ main() {
   echo -e "${GREEN}Neovim Manager CLI installer${CLEAR}\n"
   check_dependencies
   download_scripts
-  setup
+  initial_setup
   show_post_install_messages
   echo -e "✅ ${GREEN}Installation completed successfully${CLEAR}"
 }
