@@ -136,24 +136,9 @@ show_post_install_messages() {
 }
 
 main() {
-  echo -e "${GREEN}Neovim Manager CLI installer${CLEAR}\n"
 
-  check_dependencies
-  download_script
   setup
   show_post_install_messages
-
-  echo -e "✅ ${GREEN}Installation completed successfully${CLEAR}"
 }
 
-if [[ -n "$1" ]]; then
-  if [[ "$1" == "main" ]]; then
-    main
-  else
-    echo -e "❌ ${RED}Bad argument. Please use 'main' argument${CLEAR}"
-    exit 1
-  fi
-else
-  echo -e "❌ ${RED}No argument passed. Please use 'main' argument${CLEAR}"
-  exit 1
-fi
+main
