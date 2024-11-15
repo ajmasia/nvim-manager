@@ -24,7 +24,7 @@ NVIM_CONF_BACKUP="$NVIM_CONF_FILE.bk"
 ALIAS_NAME=nm
 
 check_dependencies() {
-  echo -e "${PURPLE}Checking dependencies${CLEAR}"
+  echo -e "${PURPLE}Checking dependencies${CLEAR}\n"
 
   # Array de dependencias
   dependencies=("nvim" "fzf" "git" "curl" "wget")
@@ -53,7 +53,7 @@ check_dependencies() {
 }
 
 download_script() {
-  echo -e "${PURPLE}Starting CLI download${CLEAR}"
+  echo -e "${PURPLE}Starting CLI download${CLEAR}\n"
 
   # Check if the installation directory exists
   if [ ! -d "$INSTALL_DIR" ]; then
@@ -74,7 +74,7 @@ download_script() {
 }
 
 setup() {
-  echo -e "${PURPLE}Starting neovim-manager setup${CLEAR}"
+  echo -e "${PURPLE}Starting neovim-manager setup${CLEAR}\n"
 
   # Check and create ~/.config/nvim/init.lua if it doesn't exist
   if [ ! -f "$NVIM_INIT_FILE" ]; then
@@ -126,7 +126,7 @@ setup() {
 }
 
 show_post_install_messages() {
-  echo -e "${PURPLE}Post install info${CLEAR}"
+  echo -e "${PURPLE}Post install info${CLEAR}\n"
   echo -e "To make it easier to run the script, you can add an alias to your shell configuration file:"
   echo ""
   echo -e "  ${CYAN}alias $ALIAS_NAME='$INSTALL_PATH'${CLEAR}"
