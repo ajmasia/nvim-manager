@@ -1,10 +1,9 @@
 #!/usr/bin/bash
 
 VERSION=0.1.0
-HELPER_PATH=helper.sh
 CONFIG_FILE_PATH="$HOME/.config/nvim.conf"
 
-source $HELPER_PATH
+source helper.sh
 
 show_help() {
   echo -e "Usage: ${YELLOW}Neovim Manager CLI ${PURPLE}[COMMAND]${CYAN} [NVIM_OPTIONS...]${CLEAR}"
