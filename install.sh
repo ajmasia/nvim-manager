@@ -10,13 +10,15 @@ CLEAR='\033[0m'
 SCRIPT_NAME="nvim-manager"
 HELPER_NAME="helper.sh"
 
-SCRIPT_URL=https://raw.githubusercontent.com/ajmasia/neovim-manager/main/src/$SCRIPT_NAME
-HELPER_URL=https://raw.githubusercontent.com/ajmasia/neovim-manager/main/src/$HELPER_NAME
+SCRIPT_URL=https://raw.githubusercontent.com/ajmasia/nvim-manager/main/src/$SCRIPT_NAME
+HELPER_URL=https://raw.githubusercontent.com/ajmasia/nvim-manager/main/src/$HELPER_NAME
 
 INSTALL_DIR="$HOME/.local/bin"
 
 INSTALL_PATH="$INSTALL_DIR/$SCRIPT_NAME"
 HELPER_INSTALL_PATH="$INSTALL_DIR/$HELPER_NAME"
+
+ALIAS_NAME=em
 
 check_dependencies() {
   echo -e "${PURPLE}Checking dependencies${CLEAR}\n"

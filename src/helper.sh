@@ -7,17 +7,15 @@ PURPLE='\033[0;35m'
 CYAN='\033[0;36m'
 CLEAR='\033[0m'
 
-VERSION=0.1.0
+VERSION=0.1.1
 
 NVIM_CONFIG_DIR="$HOME/.config/nvim"
 NVIM_INIT_FILE="$NVIM_CONFIG_DIR/init.lua"
 NVIM_CONF_FILE="$HOME/.config/nvim.conf"
 NVIM_CONF_BACKUP="$NVIM_CONF_FILE.bk"
 
-ALIAS_NAME=nm
-
 setup() {
-  echo -e "${PURPLE}Starting neovim-manager setup${CLEAR}\n"
+  echo -e "${PURPLE}Starting nvim-manager setup${CLEAR}\n"
 
   # Check and create ~/.config/nvim/init.lua if it doesn't exist
   if [ ! -f "$NVIM_INIT_FILE" ]; then
