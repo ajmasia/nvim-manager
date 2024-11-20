@@ -59,21 +59,21 @@ We welcome contributions! If you'd like to report bugs, suggest features, or con
 2. Create a new branch for your feature or fix.
 3. Submit a pull request.
 
-For issues, use the [Issues tab](https://github.com/ajmasia/neovim-manager/issues).
+For issues, use the [Issues tab](https://github.com/ajmasia/nvim-manager/issues).
 
 ## Development Setup
 
 Clone the repository:
 
 ```bash
-git clone https://github.com/ajmasia/neovim-manager.git
+git clone https://github.com/ajmasia/nvim-manager.git
 cd neovim-manager
 ```
 
 Test the CLI locally:
 
 ```bash
-./neovim-manager <command>
+./nvim-manager <command>
 ```
 
 ## Roadmap
